@@ -57,24 +57,24 @@ class CityControllerTest {
 	@BeforeEach
 	void setUp() {
 		this.restClient = this.restClientBuilder.baseUrl("http://localhost:" + port)
-				.defaultStatusHandler(new DefaultResponseErrorHandler() {
-					@Override
-					public void handleError(ClientHttpResponse response) {
-						// NO-OP
-					}
-				})
-				.requestInterceptor(new RetryableClientHttpRequestInterceptor(new FixedBackOff(100, 2)))
-				.build();
+			.defaultStatusHandler(new DefaultResponseErrorHandler() {
+				@Override
+				public void handleError(ClientHttpResponse response) {
+					// NO-OP
+				}
+			})
+			.requestInterceptor(new RetryableClientHttpRequestInterceptor(new FixedBackOff(100, 2)))
+			.build();
 	}
 
 	@Test
 	@Order(1)
 	void getCities() throws Exception {
 		ResponseEntity<List<City>> response = this.restClient.get()
-				.uri("/cities")
-				.retrieve()
-				.toEntity(new ParameterizedTypeReference<>() {
-				});
+			.uri("/cities")
+			.retrieve()
+			.toEntity(new ParameterizedTypeReference<>() {
+			});
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(this.listTester.write(response.getBody())).isEqualToJson("""
 				[
@@ -111,10 +111,10 @@ class CityControllerTest {
 		}
 		{
 			ResponseEntity<List<City>> response = this.restClient.get()
-					.uri("/cities")
-					.retrieve()
-					.toEntity(new ParameterizedTypeReference<>() {
-					});
+				.uri("/cities")
+				.retrieve()
+				.toEntity(new ParameterizedTypeReference<>() {
+				});
 			assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 			assertThat(this.listTester.write(response.getBody())).isEqualToJson("""
 					[
