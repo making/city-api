@@ -10,8 +10,8 @@ buildscript {
 
 plugins {
     java
-    id("org.springframework.boot") version "3.2.2"
-    id("io.spring.dependency-management") version "1.1.4"
+    id("org.springframework.boot") version "3.3.2"
+    id("io.spring.dependency-management") version "1.1.6"
     id("io.spring.javaformat") version "0.0.41"
 }
 
@@ -31,14 +31,14 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.flywaydb:flyway-core")
-    implementation("net.ttddyy.observation:datasource-micrometer-spring-boot:1.0.3")
+    implementation("net.ttddyy.observation:datasource-micrometer-spring-boot:1.0.5")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
     runtimeOnly("org.postgresql:postgresql")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-testcontainers")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:postgresql")
-    testImplementation("am.ik.spring:retryable-client-http-request-interceptor:0.3.0")
+    testImplementation("am.ik.spring:retryable-client-http-request-interceptor:0.5.1")
 }
 
 tasks.withType<Test> {
